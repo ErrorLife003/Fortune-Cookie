@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🥠 Fortune Cookie</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffbe6;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    .cookie-img {
+      width: 150px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .cookie-img:hover {
+      transform: scale(1.1);
+    }
+
+    .message {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #5a3e2b;
+      font-weight: bold;
+      min-height: 2rem;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #ffb347;
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #e59500;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🥠 Fortune Cookie App</h2>
+  <img id="cookie" class="cookie-img" src="#" alt="🥠" onclick="showFortune()">
+  
+  <p class="message" id="fortuneText"></p>
+
+  <button class="btn" onclick="resetCookie()">Try Again</button>
+
+  <script>
+    const fortunes = [
+      "You will have a great day today! 🌞",
+      "A surprise is waiting for you. 🎁",
+      "Your kindness will return to you soon. 💖",
+      "Adventure is on the horizon. ✈️",
+      "Someone is thinking of you. 💭",
+      "New opportunities are coming your way. 🌱",
+      "You’ll ace something unexpected. 💡",
+      "A cozy moment is coming your way. ☕",
+      "Laugh loud today — it’s good for your soul. 😂",
+      "You are stronger than you think. 🛡️"
+    ];
+
+    const cookie = document.getElementById("cookie");
+    const fortuneText = document.getElementById("fortuneText");
+
+    function showFortune() {
+      const randomIndex = Math.floor(Math.random() * fortunes.length);
+      fortuneText.textContent = fortunes[randomIndex];
+      cookie.src = "https://i.imgur.com/Nz9az0m.png"; // cracked cookie image
+      cookie.onclick = null; // disable further clicking
+    }
+
+    function resetCookie() {
+      fortuneText.textContent = "";
+      cookie.src = "https://i.imgur.com/6MEV28a.png"; // whole cookie image
+      cookie.onclick = showFortune;
+    }
+  </script>
+
+</body>
+</html>
